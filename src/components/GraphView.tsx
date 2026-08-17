@@ -37,7 +37,7 @@ export function GraphView({
     const visibleIds = new Set(graphData.nodes.filter((n) => activeCategories.has(n.category)).map((n) => n.id))
     return {
       nodes: graphData.nodes.filter((n) => visibleIds.has(n.id)),
-      links: graphData.links.filter((l) => visibleIds.has(l.source) && visibleIds.has(l.target)),
+      links: graphData.links.filter((l) => visibleIds.has(linkEndpointId(l.source)) && visibleIds.has(linkEndpointId(l.target))),
     }
   }, [graphData, activeCategories])
 
